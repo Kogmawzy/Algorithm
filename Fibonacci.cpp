@@ -11,8 +11,9 @@ int fib(int n)
 */
 int  fib(int n)
 {
+    if(n==0)    return 0;
     int f=0,g=1;    //定义两级台阶
-    while(n-->0)
+    while(--n>0)
     {
         g=g+f;
         f=g-f;
