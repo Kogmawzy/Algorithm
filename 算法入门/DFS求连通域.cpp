@@ -1,4 +1,7 @@
-/*----P163----油田问题*/
+
+#include <stdio.h> 
+#include <stdlib.h>
+#include <string.h>
 
 using namespace std;
 const int maxn=100+5;
@@ -8,7 +11,7 @@ int m,n,idx[maxn][maxn];
 void dfs(int i,int j,int id)
 {
 	if(i<0||i>=m||j<0||j>=n) return;
-	if(idx[i][j]!=0 || pic[i][j] != '@') return;
+	if(idx[i][j]>0 || pic[i][j] != '@') return;
 	idx[i][j]=id;
 	for(int di=-1;di<=1;di++)
 	  for(int dj=-1;dj<=1;dj++)
@@ -26,6 +29,7 @@ int main()
 		    for(int j=0;j<n;j++)
 		     if(idx[i][j]==0 && pic[i][j]=='@')
 		     dfs(i,j,++cnt);
+         printf("%d\n",cnt );
 	}
- 
+    return 0;
  } 
