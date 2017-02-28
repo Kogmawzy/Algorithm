@@ -30,7 +30,7 @@ void dfs(int u,int sum,int hands)
 		{
 			visit[i]=1;
 			dfs(i,sum+adj[u][i],hands+NumOfResc[i]);
-			visit[i]=0;
+			visit[i]=0;                                          //切记！要把访问标志位清零，否则无法求得多解
 		}
 	}
 }
