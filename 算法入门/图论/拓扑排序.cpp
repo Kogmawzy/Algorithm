@@ -10,3 +10,43 @@
 *
 *
 */
+
+#include <iostream>
+#include <queue>
+#include <vector>
+#include <cstring>
+using namespace std;
+int N,M;
+vector<int> v[505];
+priority_queue<int> Q;
+int in[505];
+int main()
+{
+    cin>>N>>M;
+    for(int i=0;i<M;i++)
+    {
+        int x,y;    cin>>x>>y;
+        v[x].push_back(y);
+        in[y]++;
+    }
+    for(int i=1;i<=N;i++) 
+    {
+        if(in[i]==0) Q.push(-i);
+    }
+    int ans=0;
+    while(!Q.empty())
+    {
+        int x=-Q.top();
+        Q.pop();
+        ans++;
+        if(ans==N) cout<<x<<endl;
+        else    cout<<x<<" "; 
+        for(int i=0;i<v[x].size();i++)
+        {
+            int u=v[x][i];
+            in[u]--;
+            if(in[u]==0)
+                Q.push(-u);
+        }
+    }
+} 
